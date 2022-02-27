@@ -8,6 +8,8 @@ Description: Woocommerce Order Pop Notification. Display previous orders to your
 Version: 1.0.0
 Author: Woolston Web Design
 Author URI: https://www.woolston.com.au
+License: GPLv2 or later
+Text Domain: sale order pop notification customer woocommerce
 GitHub Plugin URI: https://github.com/woolstonwebdesign/order-pop
 */
 
