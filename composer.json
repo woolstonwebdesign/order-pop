@@ -1,0 +1,15 @@
+{
+    "name": "woolstonwebdesign/order-pop",
+    "description": "Woolston Web Design Order Pop Sale Notifications",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "order"
+    ],
+    "homepage": "https://www.woolston.com.au/",
+    "license": "GPL-2.0+",
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=5.3.2"
+    }
+}
