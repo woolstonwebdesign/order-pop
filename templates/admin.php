@@ -120,12 +120,22 @@ if (wp_verify_nonce('order-pop-config-none')) {
             </table>
         </div>
 
-        <div id="tab-4" class="tab-pane d-none">
+        <div id="tab-4" class="tab-pane">
             <h2>About</h2>
             Steven Woolston<br />
             Woolston Web Design<br />
             Contact: 0407 077 508<br />
             Email: <a href="mailto:design@woolston.com.au">design@woolston.com.au</a>
+            <h2 class="pt-3">Purchase the Pro Version</h2>
+            <p>The Pro version of Order Pop gives much more functionality like:</p>
+            <p>
+                <ul class="pl-3" style="list-style: disc; font-size: 13px;">
+                    <li>Adding UTM codes to product links</li>
+                    <li>Allowing you to configure specific categories to include or not include in the pop</li>
+                    <li>Anonymise customer details in the pop</li>
+                </ul>
+            </p>
+            <p><a href="https://www.woolston.com.au/product/order-pop-wordpress-plugin/" target="_blank">Click here to purchase</a></p>
         </div>
 
         <?php submit_button();  ?>
