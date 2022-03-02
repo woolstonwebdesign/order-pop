@@ -47,7 +47,7 @@ if (wp_verify_nonce('order-pop-config-none')) {
                         <div>
                             <input name="op-plugin[pop_background_colour]" type="color"
                                 class="form-control"
-                                value="<?php echo ($options['pop_background_colour']) ?>">
+                                value="<?php echo esc_attr($options['pop_background_colour']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -59,7 +59,7 @@ if (wp_verify_nonce('order-pop-config-none')) {
                         <div>
                             <input name="op-plugin[pop_font_colour]" type="color"
                                 class="form-control"
-                                value="<?php echo ($options['pop_font_colour']) ?>">
+                                value="<?php echo esc_attr($options['pop_font_colour']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -71,7 +71,7 @@ if (wp_verify_nonce('order-pop-config-none')) {
                         <div>
                             <input name="op-plugin[pop_last_order_count]" type="number"
                                 class="form-control"
-                                value="<?php echo ($options['pop_last_order_count']) ?>">
+                                value="<?php echo esc_attr($options['pop_last_order_count']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -86,7 +86,7 @@ if (wp_verify_nonce('order-pop-config-none')) {
                         <div>
                             <input name="op-plugin[pop_interval_between_pop_refresh_seconds]" type="number"
                                 class="form-control"
-                                value="<?php echo ($options['pop_interval_between_pop_refresh_seconds']) ?>">
+                                value="<?php echo esc_attr($options['pop_interval_between_pop_refresh_seconds']) ?>">
                         </div>
                     </td>
                 </tr>
@@ -101,7 +101,7 @@ if (wp_verify_nonce('order-pop-config-none')) {
                         <div>
                             <input name="op-plugin[pop_interval_between_pops_after_dismissed_minutes]" type="number"
                                 class="form-control"
-                                value="<?php echo ($options['pop_interval_between_pops_after_dismissed_minutes']) ?>">
+                                value="<?php echo esc_attr($options['pop_interval_between_pops_after_dismissed_minutes']) ?>">
                         </div>
                     </td>
                 </tr>

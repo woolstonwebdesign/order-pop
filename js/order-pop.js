@@ -6,7 +6,7 @@ jQuery(document).ready( function() {
         type : "post",
         dataType : "json",
         url : myAjax.ajaxurl,
-        data : {action: "op_get_order"},
+        data : {action: "order_pop_get_order"},
     })
     .then(function(data) {
         // console.log(data);

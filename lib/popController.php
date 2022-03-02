@@ -5,24 +5,22 @@
 
 if (!defined('ABSPATH')) exit;  // if direct access 
 
-add_action("wp_ajax_op_get_order", "op_get_order");
-add_action("wp_ajax_nopriv_op_get_order", "op_get_order");    
+add_action("wp_ajax_order_pop_get_order", "order_pop_get_order");
+add_action("wp_ajax_nopriv_order_pop_get_order", "order_pop_get_order");    
 
-function op_get_order() {
-	echo json_encode(op_get_orders());
+function order_pop_get_order() {
+	echo json_encode(order_pop_get_orders());
 	die();
 }
 
-function op_get_orders() {
+function order_pop_get_orders() {
 
-	$op_options = get_option('op-plugin');
-	if (array_key_exists('stop_notifications', $op_options) && $op_options['stop_notifications']) {
+	$order_pop_options = get_option('op-plugin');
+	if (array_key_exists('stop_notifications', $order_pop_options) && $order_pop_options['stop_notifications']) {
 			die();
 	}
     
-	$pop_last_order_count = $op_options['pop_last_order_count'];
-	// $initial_date = $op_options['order_query_start_date'] != '' ? $op_options['order_query_start_date'] : '0000-01-01';
-	// $final_date = $op_options['order_query_end_date'] != '' ? $op_options['order_query_end_date'] : date('Y-m-d');
+	$pop_last_order_count = $order_pop_options['pop_last_order_count'];
 	$args = array(
 		'type' => 'shop_order',
 		'limit' => $pop_last_order_count,
@@ -55,7 +53,7 @@ function op_get_orders() {
 	
 	shuffle($orders);
 	$qualifying_products = [];
-	$options_excluded_categories = (array_key_exists('excluded_categories', $op_options) ? $op_options['excluded_categories'] : []);
+	$options_excluded_categories = (array_key_exists('excluded_categories', $order_pop_options) ? $order_pop_options['excluded_categories'] : []);
 	$excluded_categories = $options_excluded_categories ? getExcludedCategories($options_excluded_categories) : [];
 	foreach($orders as $order_id) {
 
@@ -69,8 +67,8 @@ function op_get_orders() {
 				$qualifying_products[] = array_merge(
 					array(
 						'order_date' => $order->get_date_completed()->date('Y-m-d H:i:s'),
-						'order_first_name' => (array_key_exists('anonomise_customer', $op_options) ? 'Someone ' : $order->get_billing_first_name()),
-						'order_last_name'  => (array_key_exists('anonomise_customer', $op_options) ? '' : $order->get_billing_last_name()),
+						'order_first_name' => (array_key_exists('anonomise_customer', $order_pop_options) ? 'Someone ' : $order->get_billing_first_name()),
+						'order_last_name'  => (array_key_exists('anonomise_customer', $order_pop_options) ? '' : $order->get_billing_last_name()),
 						'order_city'  => ucwords(strtolower($order->get_billing_city())),
 						'order_state'  => $order->get_billing_state()
 					),
@@ -90,13 +88,13 @@ function op_get_orders() {
 	return
 		array (
 			'options' => array(
-				'pop_interval_between_pop_refresh_seconds' => $op_options['pop_interval_between_pop_refresh_seconds'],
-				'pop_interval_between_pops_after_dismissed_minutes' => $op_options['pop_interval_between_pops_after_dismissed_minutes'],
-				'pop_background_colour' => $op_options['pop_background_colour'],
-				'pop_font_colour' => $op_options['pop_font_colour'],
-				'debug_active' => $op_options['debug_active'],
-				'custom_css' => $op_options['custom_css'],
-				'utm_code' => $op_options['utm_code'],
+				'pop_interval_between_pop_refresh_seconds' => $order_pop_options['pop_interval_between_pop_refresh_seconds'],
+				'pop_interval_between_pops_after_dismissed_minutes' => $order_pop_options['pop_interval_between_pops_after_dismissed_minutes'],
+				'pop_background_colour' => $order_pop_options['pop_background_colour'],
+				'pop_font_colour' => $order_pop_options['pop_font_colour'],
+				'debug_active' => $order_pop_options['debug_active'],
+				'custom_css' => $order_pop_options['custom_css'],
+				'utm_code' => $order_pop_options['utm_code'],
 			),
 			'debug' => array(
 				'excluded_categories' => $excluded_categories,
@@ -133,9 +131,9 @@ function getProductFromOrderItem($item) {
 }
 
 function cleanUp() {
-	$op_options = get_option('op-plugin');
+	$order_pop_options = get_option('op-plugin');
 
-	if (array_key_exists('sale_message', $op_options)) {
-		unset($op_options['sale_message']);
+	if (array_key_exists('sale_message', $order_pop_options)) {
+		unset($order_pop_options['sale_message']);
 	}
 }

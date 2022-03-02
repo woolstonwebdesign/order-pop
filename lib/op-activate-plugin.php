@@ -5,7 +5,7 @@
 
 if (! defined('ABSPATH')) exit;  // if direct access 
 
-function op_plugin_activate() {
+function order_pop_plugin_activate() {
   
 	if (!is_admin()) {
 		return;
@@ -38,7 +38,7 @@ function get_default_css() {
 		get_option('op-plugin')['custom_css'] : ``;
 }
 
-function op_plugin_deactivate() {
+function order_pop_plugin_deactivate() {
   
 	if (!is_admin() || !get_option('op-plugin')) {
 		return;
@@ -47,7 +47,7 @@ function op_plugin_deactivate() {
 	flush_rewrite_rules();
 }
 
-function op_plugin_uninstall() {
+function order_pop_plugin_uninstall() {
 	if (!is_admin() || !get_option('op-plugin')) {
 		return;
 	}
